@@ -1,7 +1,9 @@
 from client import MORK
 
 def _main():
-    with MORK(base_url="http://127.0.0.1:8001") as alice,\
+    import os
+    mork_port = os.getenv("ATOMSPACE_API_PORT", "8000")
+    with MORK(base_url=f"http://127.0.0.1:{mork_port}") as alice,\
          MORK(base_url="http://127.0.0.1:8002") as bob:
 
         tasks = []
